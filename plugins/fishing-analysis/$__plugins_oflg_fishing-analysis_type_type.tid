@@ -1,0 +1,12 @@
+caption: {{$:/language/fishing/type}}
+list-after: $:/plugins/oflg/fishing-analysis/calendar/calendar
+tags: $:/tags/SideBar/FishingAnalysis
+title: $:/plugins/oflg/fishing-analysis/type/type
+
+
+
+<$echarts
+    $tiddler="$:/plugins/oflg/fishing-analysis/type/type.js"
+    $height="400px"
+    $fillSidebar="false"
+/>

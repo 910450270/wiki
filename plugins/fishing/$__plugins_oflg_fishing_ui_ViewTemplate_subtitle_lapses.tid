@@ -1,0 +1,10 @@
+code-body: yes
+list-after: $:/plugins/oflg/fishing/ui/ViewTemplate/subtitle/reps
+tags: $:/tags/ViewTemplate/Subtitle
+title: $:/plugins/oflg/fishing/ui/ViewTemplate/subtitle/lapses
+
+<$list
+    filter="[<currentTiddler>has[lapses]]"
+>
+    {{$:/language/fishing/lapses}}: <$view field="lapses" format="text"/>
+</$list>

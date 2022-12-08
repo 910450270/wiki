@@ -1,0 +1,61 @@
+tags: $:/tags/Stylesheet
+title: $:/plugins/oflg/fishing/styles.css
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline
+
+.fishingrod-button {
+    margin:0!important;
+    padding:0 5px!important;
+    width:auto!important;
+}
+
+.dropdown-more {
+    padding:3px 20px!important;
+}
+
+.tc-fishing-learning {
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    user-select:none;
+}
+
+.tc-fishing-learning-count{
+    color:grey;
+}
+
+.tc-fishing-learning-grade .discard{
+    color:black;
+    margin-left:20px;
+}
+
+.tc-fishing-learning-grade .learn{
+    color:green;
+    margin-left:20px;
+}
+
+.tc-fishing-learning-grade .forget{
+    color:red;
+    margin-left:20px;
+}
+
+.tc-fishing-learning-grade .remember{
+    color:green;
+    margin-left:20px;
+}
+
+.tc-fishing-learning-grade .grasp{
+    color:blue;
+    margin-left:20px;
+}
+
+.tc-fishing-learning-grade .more{
+    padding-left:20px;
+}
+
+blockquote.tc-fish-quote {
+    border-left: 1px solid <<colour message-border>>;
+    margin-right: 0;
+    margin-left: 5px;
+}
+

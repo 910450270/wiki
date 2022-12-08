@@ -1,0 +1,4 @@
+code-body: yes
+title: Excerpt
+
+{{{ [{!!title}split[/]last[]] }}}

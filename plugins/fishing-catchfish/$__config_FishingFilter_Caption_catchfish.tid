@@ -1,0 +1,8 @@
+tags: $:/tags/FishingFilter/caption
+title: $:/config/FishingFilter/Caption/catchfish
+
+[<currentTiddler>tag[?]]
+[<currentTiddler>tag[!]]
+[list[$:/temp/fishing]match<currentTiddler>]
+[<currentTiddler>has[annotate-text]]
+[<currentTiddler>has[word]]

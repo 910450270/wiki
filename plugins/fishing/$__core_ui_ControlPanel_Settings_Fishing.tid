@@ -1,0 +1,18 @@
+caption: {{$:/language/fishing/fishing}}
+list-after: $:/core/ui/ControlPanel/Settings/TiddlyWiki
+tags: $:/tags/ControlPanel/SettingsTab
+title: $:/core/ui/ControlPanel/Settings/Fishing
+
+{{$:/language/fishing/settings}}<br>
+
+<$list filter="[all[shadows+tiddlers]tag[$:/tags/ControlPanel/Settings/Fishing]]">
+
+    <div style="border-top:1px solid #eee;">
+
+        !! <$transclude field="caption"/>
+
+        <$transclude/>
+
+    </div>
+
+</$list>

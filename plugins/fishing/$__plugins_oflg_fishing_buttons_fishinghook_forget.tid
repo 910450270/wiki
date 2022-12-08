@@ -1,0 +1,55 @@
+button-classes: forget tc-tiddlylink
+caption: {{$:/language/fishing/forget}}
+condition: [<targetTiddler>has[grade]]
+description: {{$:/language/fishing/forgettip}}
+key: ((fishing-forget))
+tags: $:/tags/FishingHook $:/tags/KeyboardShortcut
+title: $:/plugins/oflg/fishing/buttons/fishinghook/forget
+
+<$list
+    filter="[<targetTiddler>!is[blank]] ~[list[$:/temp/fishing]first[]!is[blank]has[grade]]"
+>
+    <$navigator
+        story="$:/StoryList"
+        history="$:/HistoryList"
+        relinkOnRename="yes"
+    >
+        <$fieldmangler>
+            <$action-sendmessage
+                $message="tm-add-tag"
+                $param="?"
+            />
+            <$action-sendmessage
+                $message="tm-remove-tag"
+                $param="!"
+            />
+            <$action-learn
+                $grade="0"
+            />
+            <$list
+                filter="[list[$:/temp/fishing]match<currentTiddler>]"
+                variable="null"
+            >
+                <$action-deletetiddler
+                    $tiddler={{{ [list[$:/temp/fishing]first[]addprefix[$:/state/folded/]] }}}
+                />
+                <$action-setfield
+                    $tiddler="$:/temp/fishing"
+                    text=""
+                    type=""
+                    list={{{ [subfilter{$:/temp/fishing!!fishingrod}subfilter{$:/temp/fishing!!fishingpond}subfilter{$:/temp/fishing!!fishingorder}first[]format:titlelist[]] }}}
+                />
+                <$action-setfield
+                    $tiddler={{{ [list[$:/temp/fishing]first[]addprefix[$:/state/folded/]] }}}
+                    text={{{ [list[$:/temp/fishing]first[]has[grade]then[hide]else[show]] }}}
+                />
+                <$action-sendmessage
+                    $message="tm-close-tiddler"
+                />
+                <$action-navigate
+                    $to={{{ [list[$:/temp/fishing]first[]] }}}
+                />
+            </$list>
+        </$fieldmangler>
+    </$navigator>
+</$list>

@@ -1,0 +1,8 @@
+button-classes: fishingrod-button
+condition: [all[shadows+tiddlers]tag[$:/tags/FishingBait]!is[draft]first[]]
+description: {{$:/language/fishing/importtip}}
+icon: $:/core/images/import-button
+list-after: $:/plugins/oflg/fishing/buttons/fishingrod/commonfilter
+popup: $:/plugins/oflg/fishing/buttons/fishingrod/popup/import
+tags: $:/tags/FishingGrod
+title: $:/plugins/oflg/fishing/buttons/fishingrod/import

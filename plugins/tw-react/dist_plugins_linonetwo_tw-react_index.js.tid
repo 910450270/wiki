@@ -1,0 +1,118 @@
+title: dist/plugins/linonetwo/tw-react/index.js
+
+"use strict";
+var __defProp = Object.defineProperty;
+var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+var __getOwnPropNames = Object.getOwnPropertyNames;
+var __hasOwnProp = Object.prototype.hasOwnProperty;
+var __export = (target, all) => {
+  for (var name in all)
+    __defProp(target, name, { get: all[name], enumerable: true });
+};
+var __copyProps = (to, from, except, desc) => {
+  if (from && typeof from === "object" || typeof from === "function") {
+    for (let key of __getOwnPropNames(from))
+      if (!__hasOwnProp.call(to, key) && key !== except)
+        __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+  }
+  return to;
+};
+var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+// src/index.ts
+var src_exports = {};
+__export(src_exports, {
+  ParentWidgetContext: () => ParentWidgetContext,
+  useFilter: () => useFilter,
+  useRenderTiddler: () => useRenderTiddler,
+  useWidget: () => useWidget
+});
+module.exports = __toCommonJS(src_exports);
+
+// src/hooks/useFilter.ts
+var import_react = require("react");
+function useFilter(twFilter, widget = $tw.rootWidget, dependencies = []) {
+  const [filterResult, setFilterResult] = (0, import_react.useState)([]);
+  const compiledFilter = (0, import_react.useMemo)(() => $tw.wiki.compileFilter(twFilter), [twFilter]);
+  (0, import_react.useEffect)(() => {
+    setFilterResult(compiledFilter(void 0, widget));
+  }, [compiledFilter, widget, ...dependencies]);
+  return filterResult;
+}
+
+// src/hooks/useRenderTiddler.ts
+var import_react3 = require("react");
+
+// src/hooks/context.ts
+var import_react2 = require("react");
+var ParentWidgetContext = (0, import_react2.createContext)(void 0);
+
+// src/hooks/useRenderTiddler.ts
+function useRenderTiddler(tiddlerTitle, containerReference, options) {
+  const parentWidget = (0, import_react3.useContext)(ParentWidgetContext);
+  (0, import_react3.useEffect)(() => {
+    const domNode = containerReference.current;
+    if (domNode === null) {
+      return;
+    }
+    if (parentWidget === void 0) {
+      throw new Error(
+        "Your plugin have a bug: `parentWidget` is undefined, you should use `<ParentWidgetContext.Provider value={props.parentWidget}>`, see tw-react for document."
+      );
+    }
+    if (options?.skip === true) {
+      return;
+    }
+    const id = String(Math.random());
+    const transcludeWidgetNode = $tw.wiki.makeTranscludeWidget(tiddlerTitle, {
+      document,
+      parentWidget,
+      recursionMarker: "yes",
+      mode: "block",
+      importPageMacros: true,
+      variables: { "use-widget-id": id }
+    });
+    const tiddlerContainer = document.createElement("div");
+    domNode.append(tiddlerContainer);
+    transcludeWidgetNode.render(tiddlerContainer, null);
+    parentWidget.children.push(transcludeWidgetNode);
+    return () => {
+      parentWidget.children = parentWidget.children.filter((child) => child.getVariable("use-widget-id") !== id);
+      if (domNode === null) {
+        return;
+      }
+      domNode.textContent = "";
+    };
+  }, [tiddlerTitle, containerReference]);
+}
+
+// src/hooks/useWidget.ts
+var import_react4 = require("react");
+function useWidget(parseTreeNode, containerReference, options) {
+  const parentWidget = (0, import_react4.useContext)(ParentWidgetContext);
+  (0, import_react4.useEffect)(() => {
+    const domNode = containerReference.current;
+    if (domNode === null) {
+      return;
+    }
+    if (parentWidget === void 0) {
+      throw new Error(
+        "Your plugin have a bug: `parentWidget` is undefined, you should use `<ParentWidgetContext.Provider value={props.parentWidget}>`, see tw-react for document."
+      );
+    }
+    if (options?.skip === true) {
+      return;
+    }
+    const id = String(Math.random());
+    const newWidgetNode = parentWidget.makeChildWidget(parseTreeNode, { variables: { "use-widget-id": id } });
+    newWidgetNode.render(domNode, null);
+    parentWidget.children.push(newWidgetNode);
+    return () => {
+      parentWidget.children = parentWidget.children.filter((child) => child.getVariable("use-widget-id") !== id);
+      if (domNode === null) {
+        return;
+      }
+      domNode.textContent = "";
+    };
+  }, [parseTreeNode, containerReference, parentWidget, options?.skip]);
+}

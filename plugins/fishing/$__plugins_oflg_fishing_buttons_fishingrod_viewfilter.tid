@@ -1,0 +1,36 @@
+button-classes: fishingrod-button
+condition: [all[tiddlers+shadows]removeprefix[$:/plugins/oflg/fishing/fishingrod/]match{$:/temp/fishing!!fishingrod}]
+description: {{{ [{$:/language/fishing/viewfiltertip}addsuffix[ : ]addsuffix{$:/temp/fishing!!fishingrod}] }}}
+icon: $:/core/images/advanced-search-button
+list-after: 
+tags: $:/tags/FishingGrod
+title: $:/plugins/oflg/fishing/buttons/fishingrod/viewfilter
+
+<$action-setfield
+    $tiddler="$:/temp/fishing"
+    text=""
+    list=""
+/>
+<$action-setfield
+    $tiddler="$:/temp/advancedsearch"
+    text="[{$:/temp/fishing!!fishingrod}addprefix[$:/plugins/oflg/fishing/fishingrod/]] [{$:/temp/fishing!!fishingrod}addprefix[$:/plugins/oflg/fishing/fishingrod/]shadowsource[]] [subfilter{$:/temp/fishing!!fishingrod}is[tiddler]] [{$:/temp/fishing!!fishingrod}addprefix[$:/plugins/oflg/fishing/fishingrod/]shadowsource[]plugintiddlers[]is[tiddler]]"
+/>
+<$action-setfield
+    $tiddler="$:/temp/advancedsearch/input"
+    text="[{$:/temp/fishing!!fishingrod}addprefix[$:/plugins/oflg/fishing/fishingrod/]] [{$:/temp/fishing!!fishingrod}addprefix[$:/plugins/oflg/fishing/fishingrod/]shadowsource[]] [subfilter{$:/temp/fishing!!fishingrod}is[tiddler]] [{$:/temp/fishing!!fishingrod}addprefix[$:/plugins/oflg/fishing/fishingrod/]shadowsource[]plugintiddlers[]is[tiddler]]"
+/>
+<$action-setfield
+    $tiddler="$:/temp/advancedsearch/refresh"
+    text="yes"
+/>
+<$action-setfield
+    $tiddler="$:/state/tab--1498284803"
+    text="$:/core/ui/AdvancedSearch/Filter"
+/>
+<$action-navigate
+    $to="$:/AdvancedSearch"
+/>
+<$action-sendmessage
+    $message="tm-focus-selector"
+    $param=".tc-advanced-search input"
+/>

@@ -1,0 +1,19 @@
+caption: {{$:/language/fishing/annotateword}}
+condition: [<selectionTrim>]
+description: {{$:/language/fishing/annotatewordtip}}
+icon: $:/core/images/help
+tags: $:/tags/Annotation
+title: $:/plugins/oflg/fishing-catchfish/buttons/annotation/annotateword
+
+<$action-createtiddler
+    $basetitle={{{ [{$:/language/fishing/annotateword}addsuffix[/]addsuffix<selectionTrim>] }}}
+    tags="?"
+    caption="{{||Word}}"
+    word=<<selectionTrim>>
+    priority={{{ [<sourceTiddler>get[priority]else[0]] }}}
+>
+    <$action-learn
+        $tiddler=<<createTiddler-title>>
+        $grade="-1"
+    />
+</$action-createtiddler>

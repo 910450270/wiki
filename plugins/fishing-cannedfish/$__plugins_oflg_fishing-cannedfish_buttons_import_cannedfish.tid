@@ -1,0 +1,24 @@
+caption: {{$:/language/fishing/cannedfish}}
+condition: [all[shadows+tiddlers]tag[$:/tags/FishingBait]!is[draft]first[]]
+description: {{$:/language/fishing/cannedfishtip}}
+tags: $:/tags/FishingBait
+title: $:/plugins/oflg/fishing-cannedfish/buttons/import/cannedfish
+
+<$list
+    filter="$:/config/CannedfishLibrary"
+>
+    <$action-sendmessage
+        $message="tm-load-plugin-library"
+        url={{!!url}}
+        infoTitlePrefix="$:/temp/RemoteAssetInfo/"
+    />
+    <$action-sendmessage
+        $message="tm-modal"
+        $param="$:/Import/cannedfish"
+        currentTiddler=<<currentTiddler>>
+    />
+    <$action-popup
+        $state=<<qualify "$:/state/popup/$:/plugins/oflg/fishing/fishingdeck">>
+        $coords=""
+    />
+</$list>

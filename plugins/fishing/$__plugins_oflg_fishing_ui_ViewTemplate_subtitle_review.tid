@@ -1,0 +1,9 @@
+code-body: yes
+tags: $:/tags/ViewTemplate/Subtitle
+title: $:/plugins/oflg/fishing/ui/ViewTemplate/subtitle/review
+
+<$list
+    filter="[<currentTiddler>has[review]]"
+>
+    {{$:/language/fishing/review}}: <$view field="review" format="relativedate"/>
+</$list>

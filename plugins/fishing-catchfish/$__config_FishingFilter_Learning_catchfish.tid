@@ -1,0 +1,8 @@
+tags: $:/tags/FishingFilter/learning
+title: $:/config/FishingFilter/Learning/catchfish
+
+[{$:/temp/fishing/excerpt}match{!!annotate-text}]
+[{$:/temp/fishing/selection}trim[]match{!!word}]
+[{$:/temp/fishing/selection}trim[]lowercase[]match{!!word}]
++[!is[blank]then<currentTiddler>!tag[!]]
+-[<currentTiddler>sameday:review<now YYYY0MM0DD>]

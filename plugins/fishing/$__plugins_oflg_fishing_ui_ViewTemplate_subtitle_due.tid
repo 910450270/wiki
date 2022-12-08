@@ -1,0 +1,10 @@
+code-body: yes
+list-after: $:/plugins/oflg/fishing/ui/ViewTemplate/subtitle/review
+tags: $:/tags/ViewTemplate/Subtitle
+title: $:/plugins/oflg/fishing/ui/ViewTemplate/subtitle/due
+
+<$list
+    filter="[<currentTiddler>has[due]]"
+>
+    {{$:/language/fishing/due}}: <$view field="due" format="relativedate"/>
+</$list>

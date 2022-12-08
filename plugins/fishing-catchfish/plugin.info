@@ -1,0 +1,15 @@
+{
+    "author": "oflg",
+    "core-version": ">=5.2.3",
+    "dependents": "$:/plugins/oflg/fishing $:/plugins/tiddlywiki/dynaview $:/plugins/tiddlywiki/dynannotate",
+    "description": "Integrate Incremental Reading into TiddlyWiki",
+    "list": "readme license",
+    "name": "Fishing Catchfish",
+    "plugin-type": "plugin",
+    "source": "https://github.com/oflg/fishing-catchfish",
+    "title": "$:/plugins/oflg/fishing-catchfish",
+    "version": "0.4.0",
+    "revision": "0",
+    "bag": "default",
+    "parent-plugin": "$:/plugins/oflg/fishing"
+}

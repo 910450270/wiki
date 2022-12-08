@@ -1,0 +1,14 @@
+button-classes: fishingrod-button
+condition: [all[tiddlers+shadows]removeprefix[$:/plugins/oflg/fishing/fishingrod/]match{$:/temp/fishing!!fishingrod}]
+description: {{{ [{$:/language/fishing/customisefiltertip}addsuffix[ : ]addsuffix{$:/temp/fishing!!fishingrod}] }}}
+icon: $:/core/images/options-button
+list-after: $:/plugins/oflg/fishing/buttons/fishingrod/commonfilter
+popup: $:/plugins/oflg/fishing/buttons/fishingrod/popup/customisefilter
+tags: $:/tags/FishingGrod
+title: $:/plugins/oflg/fishing/buttons/fishingrod/customisefilter
+
+<$action-setfield
+    $tiddler="$:/temp/fishing"
+    text=""
+    list=""
+/>

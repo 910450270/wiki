@@ -1,0 +1,3 @@
+title: $:/config/fishingpond/duepond
+
+[!is[blank]] -[has[due]!days:due[1]] -[sameday:review<now YYYY0MM0DD>]

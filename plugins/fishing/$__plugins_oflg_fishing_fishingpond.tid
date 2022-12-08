@@ -1,0 +1,42 @@
+title: $:/plugins/oflg/fishing/fishingpond
+
+<$list
+    filter="due undue"
+    variable="pondname"
+>
+    <$let
+        pondordername={{{ [<pondname>addsuffix[order]] }}}
+        fishingrod={{{ [{$:/temp/fishing!!fishingrod}!is[blank]else{$:/config/fishingpond/rod}] }}}
+        fishingpond={{{ [<pondname>match[due]then{$:/config/fishingpond/duepond}] ~[<pondname>match[undue]then{$:/config/fishingpond/unduepond}] }}}
+        fishingorder={{{ [<fishingrod>addprefix[$:/plugins/oflg/fishing/fishingrod/]getindex<pondordername>] ~[<pondname>match[due]then{$:/config/fishingpond/autoorder}] ~[<pondname>match[undue]then{$:/config/fishingpond/modifiedorder}] }}}
+    >
+        <$button
+            tooltip={{$:/language/fishing/fishingpondtip}}
+            aria-label={{$:/language/fishing/fishingpondtip}}
+            class="tc-btn-invisible tc-tiddlylink"
+            style="padding-right:10px;"
+        >
+            <$action-setfield
+                $tiddler="$:/temp/fishing"
+                text=""
+                type=""
+                fishingrod=<<fishingrod>>
+                fishingpond=<<fishingpond>>
+                fishingorder=<<fishingorder>>
+                list={{{ [subfilter<fishingrod>subfilter<fishingpond>subfilter<fishingorder>first[]format:titlelist[]] }}}
+            />
+            <$action-setfield
+                $tiddler={{{ [list[$:/temp/fishing]first[]addprefix[$:/state/folded/]] }}}
+                text={{{ [list[$:/temp/fishing]first[]has[grade]then[hide]else[show]] }}}
+            />
+            <$action-navigate
+                $to={{{ [list[$:/temp/fishing]first[]] }}}
+            />
+            <$action-popup
+                $state=<<qualify "$:/state/popup/$:/plugins/oflg/fishing/fishingdeck">>
+                $coords=""
+            />
+                <$text text={{{ [[$:/language/fishing/]addsuffix<pondname>get[text]] }}}/>: <$count filter="[subfilter<fishingrod>subfilter<fishingpond>]"/>
+        </$button>
+    </$let>
+</$list>

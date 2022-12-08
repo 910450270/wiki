@@ -1,0 +1,38 @@
+caption: {{$:/language/fishing/setselect}}
+condition: [<targetTiddler>]
+description: {{$:/language/fishing/setselecttip}}
+icon: $:/plugins/oflg/fishing-catchfish/icons/setselect
+shortcuts: ((fishing-setselect))
+tags: $:/tags/EditorToolbar
+title: $:/plugins/oflg/fishing-catchfish/buttons/editortoolbar/setselect
+
+\define tv-action-refresh-policy() always
+
+<$action-sendmessage
+    $message="tm-edit-text-operation"
+    $param="save-selection"
+    tiddler="$:/temp/fishing"
+    field="save-selection"
+/>
+
+<$list
+    filter="[<targetTiddler>]"
+>
+    <$navigator
+        story="$:/StoryList"
+        history="$:/HistoryList"
+        relinkOnRename="yes"
+    >
+        <$fieldmangler>
+            <$action-sendmessage
+                $message="tm-add-tag"
+                $param="?"
+            />
+            <$action-setfield
+                $tiddler=<<targetTiddler>>
+                draft.title={{{ [{$:/temp/fishing!!save-selection}search-replace:g:regexp[\n],[<br>]!is[blank]] ~[<targetTiddler>get[draft.title]] }}}
+                caption="{{||Select}}"
+            />
+        </$fieldmangler>
+    </$navigator>
+</$list>

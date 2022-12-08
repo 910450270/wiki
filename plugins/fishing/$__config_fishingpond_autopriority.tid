@@ -1,0 +1,3 @@
+title: $:/config/fishingpond/autopriority
+
+[{!!caption}search-replace::regexp[{{\|\|(.*)}}],[$1]tag[$:/tags/QuestionTemplate]count[]] =[{!!due}interval[]] =[{!!priority}else[0]] =[<currentTiddler>tags[]count[]] =[<currentTiddler>tagging[]has[due]count[]negate[]] =[<currentTiddler>tagging[]has[due]!days:due[1]count[]] =[<currentTiddler>tagging[]has[due]!days:due[1]count[]] +[sum[]]

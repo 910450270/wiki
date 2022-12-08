@@ -1,0 +1,15 @@
+caption: {{$:/language/fishing/globalsettings}}
+tags: $:/tags/ControlPanel/Settings/Fishing
+title: $:/core/ui/ControlPanel/Settings/Fishing/fishing
+
+!!!{{$:/language/fishing/setparameter}}
+
+|{{$:/language/fishing/setretention}} |<$edit-text tiddler="$:/plugins/oflg/fishing/data" index="requestRetention" placeholder="0.9" tag="input"/><br/>@@color:red;font-size:10px;{{$:/language/fishing/setretentiontip}}@@ |
+
+!!!{{$:/language/ControlPanel/Cascades/Caption}}
+
+{{$:/language/fishing/settitletip}}
+{{$:/tags/FishingFilter/caption||$:/snippets/ListTaggedCascade}}
+
+{{$:/language/fishing/setlearntip}}
+{{$:/tags/FishingFilter/learning||$:/snippets/ListTaggedCascade}}

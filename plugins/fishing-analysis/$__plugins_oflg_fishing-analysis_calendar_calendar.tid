@@ -1,0 +1,27 @@
+caption: {{$:/language/fishing/calendar}}
+tags: $:/tags/SideBar/FishingAnalysis
+title: $:/plugins/oflg/fishing-analysis/calendar/calendar
+
+<center style="font-size:20px;">
+    <$button
+        set="$:/temp/fishing!!year"
+        setTo={{{ [{$:/temp/fishing!!year}subtract[1]!match[-1]] ~[<now YYYY>subtract[1]] }}}
+        class="tc-btn-invisible tc-tiddlylink"
+
+    >
+        ◄
+    </$button> ''<$text text={{{[{$:/temp/fishing!!year}match[]then<now YYYY>else{$:/temp/fishing!!year}]}}}/>'' <$button
+        set="$:/temp/fishing!!year"
+        setTo={{{ [{$:/temp/fishing!!year}add[1]!match[1]] ~[<now YYYY>add[1]] }}}
+        class="tc-btn-invisible tc-tiddlylink"
+
+    >
+        ►
+    </$button>
+</center>
+
+<$echarts
+    $tiddler="$:/plugins/oflg/fishing-analysis/calendar/calendar.js"
+    $height="380px"
+    $fillSidebar="false"
+/>

@@ -1,0 +1,3 @@
+title: $:/config/fishingpond/autoorder
+
+[!sortsub:number{$:/config/fishingpond/autopriority}]

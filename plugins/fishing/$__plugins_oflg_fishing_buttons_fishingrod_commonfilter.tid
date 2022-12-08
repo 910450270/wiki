@@ -1,0 +1,40 @@
+button-classes: fishingrod-button
+condition: [all[tiddlers+shadows]removeprefix[$:/plugins/oflg/fishing/fishingrod/]first[]]
+description: {{$:/language/fishing/commonfiltertip}}
+icon: $:/core/images/down-arrow
+list-before: 
+popup: $:/plugins/oflg/fishing/buttons/fishingrod/popup/commonfilter
+tags: $:/tags/FishingGrod
+title: $:/plugins/oflg/fishing/buttons/fishingrod/commonfilter
+
+<$reveal
+    state=<<qualify "$:/state/popup/$:/plugins/oflg/fishing/fishingrod/fishingline">>
+    type="popup"
+    position="below"
+    animate="yes"
+>
+    <div
+        class="tc-drop-down"
+        style="min-width:0;font-size:10pt;"
+    >
+        <$list
+            filter="[all[tiddlers+shadows]removeprefix[$:/plugins/oflg/fishing/fishingrod/]sort[title]]"
+            variable="fishingrod"
+        >
+            <$button
+                tooltip={{{ [{$:/language/fishing/fillfiltertip}addsuffix[ : ]addsuffix<fishingrod>] }}}
+                aria-label={{{ [{$:/language/fishing/fillfiltertip}addsuffix[ : ]addsuffix<$:/temp/fishing!!fishingrod>] }}}
+                popup=<<qualify "$:/state/popup/$:/plugins/oflg/fishing/fishingrod/fishingline">>
+                class="tc-btn-invisible"
+            >
+                <$action-setfield
+                    $tiddler="$:/temp/fishing"
+                    fishingrod=<<fishingrod>>
+                />
+                <$text
+                    text={{{ [<fishingrod>addprefix[$:/plugins/oflg/fishing/fishingrod/]get[caption]] ~[<fishingrod>] }}}
+                />
+            </$button>
+        </$list>
+    </div>
+</$reveal>

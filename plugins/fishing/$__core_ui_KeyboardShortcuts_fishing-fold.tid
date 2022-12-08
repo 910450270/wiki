@@ -1,0 +1,12 @@
+key: ((fishing-fold))
+tags: $:/tags/KeyboardShortcut
+title: $:/core/ui/KeyboardShortcuts/fishing-fold
+
+<$list
+    filter="[list[$:/temp/fishing]first[]!is[blank]]"
+>
+    <$action-setfield
+        $tiddler={{{ [list[$:/temp/fishing]first[]addprefix[$:/state/folded/]] }}}
+        text={{{ [list[$:/temp/fishing]first[]addprefix[$:/state/folded/]get[text]match[hide]then[show]else[hide]] }}}
+    />
+</$list>
